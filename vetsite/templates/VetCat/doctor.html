@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Наши ветеринары{% endblock title %}
+{% block content %}
+<main class="background" style="background-image: url({% static '/img/Fon.png' %});">
+  <div class="container-2">
+       {% if doctor_list %}
+      <div class="doctor-content">
+        {% for doctor in doctor_list %}
+        <a  href="/doctor/{{ doctor.id }}" class="doctor-box">
+            <img src="{{ doctor.image.url }}" alt="">
+            <div class="doctor-box-bottom">
+                <h4>Врач: {{ doctor.surname }} {{ doctor.name }}</h4>
+                <h4>Специальность: <span>{{ doctor.category }}</span></h4>
+                <p>Подробнее</p>
+            </div>
+        </a>
+          {% endfor %}
+    </div>
+          {% else %}
+        <h2>Врачей нет.</h2>
+    {% endif %}
+  </div>
+</main>
+{% endblock content %}

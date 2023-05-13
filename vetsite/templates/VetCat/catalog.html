@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Не библиотека{% endblock title %}
+{% block content %}
+<main class="background" style="background-image: url({% static '/img/Fon.png' %});">
+  <div class="container-2">
+    <h1>Все услуги</h1>
+        <div class="service-content">
+            {% if categories %}
+                {% for category in categories %}
+            <a href="{% url 'services' category.pk %}">
+            <div class="service-box">
+                <div class="service-box-block">
+                    <div class="service-box-text">
+                        <h4>{{ category.name }}</h4>
+                        <img src="{% static '/img/icon/arrow.png' %}" alt="">
+                    </div>
+
+                    <div class="eclipse">
+                        <div class="eclipse-big"></div>
+                        <div class="eclipse-small"></div>
+                      </div>
+                </div>
+                <div class="service-box_img" style="background-image: url({{ category.image.url }});">
+                </div>
+            </div>
+            </a>
+            {% endfor %}
+    {% endif %}
+        </div>
+
+
+  </div>
+</main>
+
+{% endblock content %}

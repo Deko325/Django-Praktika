@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Контакты{% endblock title %}
+{% block content %}
+<main class="background" style="background-image: url({% static '/img/Fon.png' %});">
+  <div class="container-2">
+            <div class="contact-form" id="contact">
+        <div class="contact-form-img" style="background-image:url({% static '/img/bg.png' %})">
+            <img src="{% static '/img/Cat.png' %}" alt="">
+        </div>
+        <div class="contact-form-right">
+            <h2>Запишитесь на прием</h2>
+            <p>Оставьте заявку и наши специалисты свяжутся с вами!</p>
+            <div class="contact-form-form">
+                <form action="{% url 'contact' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-top">
+                        <span>
+                           {{ form.name }}
+
+                        </span>
+                        <span>
+                            {{ form.email }}
+
+                        </span>
+                    </div>
+                    <div class="form-bottom">
+                        {{ form.message }}
+                        <div class="btn">
+
+                            <input type="submit" value="Отправить" class="main-btn">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+        <div class="contact-map">
+            <div class="contact-info">
+                <div class="contact-box">
+                    <div class="contact-text">
+                        <img src="{% static 'img/icon/pin.png' %}" alt="">
+                        <p>Пн-Пт</p>
+                    </div>
+                    <span>10.00-22.00</span>
+                </div>
+                <div class="contact-box">
+                    <div class="contact-text">
+                        <img src="{% static 'img/icon/time.png' %}" alt="">
+                        <p>Сб-Вс</p>
+                    </div>
+                    <span>10.00-18.00</span>
+                </div>
+                <div class="contact-box">
+                    <div class="contact-text">
+                        <img src="{% static 'img/icon/time.png' %}" alt="">
+                        <p>Адрес</p>
+                    </div>
+                    <span>г. Вологда ул. Кирова 36</span>
+                </div>
+                <div class="contact-box">
+                    <div class="contact-text">
+                        <img src="{% static 'img/icon/phone-call.png' %}" alt="">
+                        <p>Телефон</p>
+                    </div>
+                    <a href="">+7 (921) 137-52-35</a>
+                </div>
+                <div class="contact-box">
+                    <div class="contact-text">
+                        <img src="{% static 'img/icon/email.png' %}" alt="">
+                        <p>Email</p>
+                    </div>
+                    <a href="">VetCat@mail.ru</a>
+                </div>
+                <div class="contact-box">
+                    <div class="contact-icon-map">
+                        <a href="https://telegram.org/"><img src="{% static 'img/icon/telegram-icon.png' %}" alt=""></a>
+                        <a href="https://www.whatsapp.com/"><img src="{% static 'img/icon/whatsapp-icon.png' %}" alt=""></a>
+                        <a href="https://vk.com/"><img src="{% static 'img/icon/vk-icon.png' %}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="map">
+                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A7e03b54c85fa08f57a219ce447ee608c2d8bdedb0634be0a9d3c26b83f637219&amp;source=constructor" width="770" height="600" frameborder="0"></iframe>
+            </div>
+
+        </div>
+  </div>
+</main>
+{% endblock content %}

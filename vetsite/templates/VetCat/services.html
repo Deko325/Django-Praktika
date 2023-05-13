@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Услуги{% endblock title %}
+{% block content %}
+<main class="background" style="background-image: url({% static '/img/Fon.png' %});">
+  <div class="container-2">
+            <h1>{{ category }}</h1>
+                <table border="1" cellpadding="0">
+                    <tbody>
+                        <tr>
+                            <td colspan="1">
+                                <p>№</p>
+                            </td>
+                            <td style="width: 85%;text-align: left;">
+                                <p>Наименование услуги</p>
+                            </td>
+                            <td >
+                                <p>Цена в рублях</p>
+                            </td>
+                        </tr>
+        {% if services %}
+            {% for pk in services %}
+                        <tr>
+                            <td colspan="1">
+                                <p> {{ forloop.counter0|add:1 }}</p>
+                            </td>
+                            <td style="text-align: left;">
+                                <p>{{ pk.name }}</p>
+                            </td>
+                            <td>
+                                <p>{{ pk.price }}.00</p>
+                            </td>
+                        </tr>
+            {% endfor %}
+                    </tbody>
+                </table>
+        {% endif %}
+  </div>
+</main>
+
+{% endblock content %}

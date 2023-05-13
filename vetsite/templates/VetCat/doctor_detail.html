@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Ветеринар{% endblock title %}
+{% block content %}
+<main class="background" style="background-image: url({% static '/img/Fon.png' %});">
+  <div class="container-2">
+            <div class="doctor-list">
+                <div class="doctor-img">
+                    <img src="{{ object.image.url }}" alt="">
+                </div>
+                <div class="doctor-info">
+                    <div class="info-top">
+                        <h1>{{ object.surname }} {{ object.name }}</h1>
+                        <p>{{ object.description }}</p>
+                    </div>
+                    <div class="info-bottom">
+                        <p>Образование: {{ object.education }}</p>
+                        <p>Специальность: {{ object.category }}</p>
+                    </div>
+
+                </div>
+            </div>
+      </div>
+</main>
+{% endblock content %}

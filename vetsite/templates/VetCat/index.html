@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Главная{% endblock title %}
+{% block content %}
+    <div class="header-slider">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" style="background-image: url({% static '/img/woman.png' %});">
+            <div class="container-slide">
+              <div class="slide-content">
+                <h2>Лучшая ветеринарная клиника в Вологде</h2>
+                <p>Принимаем ваших питомцев даже по праздникам</p>
+                <button type="button" class="main-btn" ><img src="{% static '/img/icon/fi-rs-paw.png' %}"><a href="#contact">Записаться</a></button>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide" style="background-image: url({% static '/img/woman.png' %});">
+            <div class="container-slide">
+              <div class="slide-content">
+                <h2>Вызов врача на дом</h2>
+                <p>Свяжитесь с нами и к вам приедет наш терапевт</p>
+                <button type="button" class="main-btn"><img src="{% static '/img/icon/fi-rs-paw.png' %}"><a href="#contact">Записаться</a></button>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide" style="background-image: url({% static '/img/woman.png' %});">
+            <div class="container-slide">
+              <div class="slide-content">
+                <h2>Не забывайте о профилактике</h2>
+                <p>Ухаживайте за своими питомцами только лучшими лекарствами</p>
+                <button type="button" class="main-btn"><img src="{% static '/img/icon/fi-rs-paw.png' %}"><a href="#contact">Записаться</a></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+<main class="background" style="background-image: url({% static '/img/Fon.png' %});">
+  <div class="container-2">
+    <h1>Наши услуги</h1>
+        <div class="service-content">
+            {% if categories %}
+                {% for category in categories %}
+            <a href="{% url 'services' category.pk %}">
+            <div class="service-box">
+                <div class="service-box-block">
+                    <div class="service-box-text">
+                        <h4>{{ category.name }}</h4>
+                        <img src="{% static '/img/icon/arrow.png' %}" alt="">
+                    </div>
+
+                    <div class="eclipse">
+                        <div class="eclipse-big"></div>
+                        <div class="eclipse-small"></div>
+                      </div>
+                </div>
+                <div class="service-box_img" style="background-image: url({{ category.image.url }});">
+                </div>
+            </div>
+            </a>
+            {% endfor %}
+    {% endif %}
+            <a href="/catalog">
+                            <div class="service-box">
+                <div class="service-box-block">
+                    <div class="service-box-text">
+                        <h4>Смотреть все услуги</h4>
+                        <img src="{% static '/img/icon/arrow.png' %}" alt="">
+                    </div>
+
+                    <div class="eclipse">
+                        <div class="eclipse-big"></div>
+                        <div class="eclipse-small"></div>
+                      </div>
+                </div>
+                <div class="service-box_img" style="background-image: url({% static '/img/all-service.jpg' %});">
+                </div>
+            </div>
+            </a>
+
+        </div>
+    <h1>О нас</h1>
+    <div class="about-block">
+        <div class="about-left">
+            <p>«VetCat» — уютная, современно оборудованная ветеринарная клиника в центре Вологды.</p>
+            <p>Наш дружный коллектив специалистов всегда готов подать руку помощи вашим нуждающимся питомцам.</p>
+            <div class="about-advantage">
+                <h2>Наши преимущества</h1>
+                <div class="about-text">
+                    <img src="{% static '/img/icon/checked.png' %}" alt="">
+                    <span>Удобство</span>
+                </div>
+                <div class="about-text">
+                    <img src="{% static '/img/icon/checked.png' %}" alt="">
+                    <span>Индивидуальный подход</span>
+                </div>
+                <div class="about-text">
+                    <img src="{% static '/img/icon/checked.png' %}" alt="">
+                    <span>Отсутствие очередей</span>
+                </div>
+                <div class="about-text">
+                    <img src="{% static '/img/icon/checked.png' %}" alt="">
+                    <span>Доступность</span>
+                </div>
+            </div>
+        </div>
+        <div class="about-right">
+            <img src="{% static '/img/aboutVetCat.jpg' %}" alt="">
+        </div>
+
+    </div>
+      <div class="contact-form" id="contact">
+        <div class="contact-form-img" style="background-image:url({% static '/img/bg.png' %})">
+            <img src="{% static '/img/Cat.png' %}" alt="">
+        </div>
+        <div class="contact-form-right">
+            <h2>Запишитесь на прием</h2>
+            <p>Оставьте заявку и наши специалисты свяжутся с вами!</p>
+            <div class="contact-form-form">
+                <form action="{% url 'contact' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-top">
+                        <span>
+                           {{ form.name }}
+
+                        </span>
+                        <span>
+                            {{ form.email }}
+
+                        </span>
+                    </div>
+                    <div class="form-bottom">
+                        {{ form.message }}
+                        <div class="btn">
+
+                            <input type="submit" value="Отправить" class="main-btn">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+  </div>
+</main>
+{% endblock content %}
